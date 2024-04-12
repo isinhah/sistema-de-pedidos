@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dev</groupId>
-	<artifactId>spring</artifactId>
+	<artifactId>sistema-de-pedidos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sistema-de-pedidos</name>
 	<description>Sistema de pedidos com Spring Boot</description>
