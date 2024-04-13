@@ -1,5 +1,6 @@
 package com.dev.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -20,6 +21,7 @@ public class Product implements Serializable {
     private String name;
     private Double price;
 
+    @JsonBackReference //Só vai mostrar as categorias do outro lado da associação
     // Associação muitos para muitos: 1 produto pode estar em * categorias
     @ManyToMany //Em um dos dois lados
     @JoinTable(name = "product_category",

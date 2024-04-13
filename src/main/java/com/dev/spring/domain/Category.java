@@ -1,5 +1,6 @@
 package com.dev.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -19,6 +20,7 @@ public class Category implements Serializable {
     private Integer id;
     private String name;
 
+    @JsonManagedReference //Lado que vem os objetos associados
     // Associação muitos para muitos: 1 categoria pode ter * produtos
     @ManyToMany(mappedBy = "categories")
     private List<Product> products = new ArrayList<>();

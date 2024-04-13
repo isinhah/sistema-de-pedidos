@@ -1,6 +1,7 @@
 package com.dev.spring.services;
 
 import com.dev.spring.domain.Category;
+import com.dev.spring.exceptions.ObjectNotFoundException;
 import com.dev.spring.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ public class CategoryService {
 
     public Category findById(Integer id) {
         Optional<Category> obj = repo.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Object not found! Id: " + id + ", Type: " + Category.class.getName()));
     }
+
 }
