@@ -1,5 +1,6 @@
 package com.dev.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -18,6 +19,7 @@ public class City implements Serializable {
     private String name;
 
     // Cidade só tem 1 estado
+    @JsonManagedReference // Permite mostrar o estado
     @ManyToOne
     @JoinColumn(name = "state_id")
     private State state;

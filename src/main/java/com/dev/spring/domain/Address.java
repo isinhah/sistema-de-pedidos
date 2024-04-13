@@ -1,5 +1,6 @@
 package com.dev.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -22,6 +23,7 @@ public class Address implements Serializable {
     private String zipcode; //cep
 
     // Endereço só tem 1 cliente
+    @JsonBackReference // Endereço não pode mostrar o cliente
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;

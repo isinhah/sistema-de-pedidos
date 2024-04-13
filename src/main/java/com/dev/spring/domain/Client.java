@@ -1,6 +1,7 @@
 package com.dev.spring.domain;
 
 import com.dev.spring.domain.enums.ClientType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -22,6 +23,7 @@ public class Client implements Serializable {
     private Integer type;
 
     // Cliente pode ter * endereços
+    @JsonManagedReference //Permite mostrar todos os endereços do cliente
     @OneToMany(mappedBy = "client")
     private List<Address> addresses = new ArrayList<>();
 

@@ -1,5 +1,6 @@
 package com.dev.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -20,6 +21,7 @@ public class State implements Serializable {
     private String name;
 
     // Estado tem * cidades
+    @JsonBackReference // Não permite mostrar as cidades
     @OneToMany(mappedBy = "state")
     private List<City> cities = new ArrayList<>();
 
