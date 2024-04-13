@@ -1,16 +1,13 @@
 package com.dev.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Category implements Serializable {
+public class City implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -20,16 +17,17 @@ public class Category implements Serializable {
     private Integer id;
     private String name;
 
-    @JsonManagedReference //Lado que vem os objetos associados
-    // 1 categoria pode ter * produtos
-    @ManyToMany(mappedBy = "categories")
-    private List<Product> products = new ArrayList<>();
+    // Cidade só tem 1 estado
+    @ManyToOne
+    @JoinColumn(name = "state_id")
+    private State state;
 
-    public Category() {}
+    public City() {}
 
-    public Category(Integer id, String name) {
+    public City(Integer id, String name, State state) {
         this.id = id;
         this.name = name;
+        this.state = state;
     }
 
     public Integer getId() {
@@ -48,20 +46,20 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public State getState() {
+        return state;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setState(State state) {
+        this.state = state;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(id, category.id);
+        City city = (City) o;
+        return Objects.equals(id, city.id);
     }
 
     @Override

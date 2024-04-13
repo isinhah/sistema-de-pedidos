@@ -1,9 +1,13 @@
 package com.dev.spring;
 
 import com.dev.spring.domain.Category;
+import com.dev.spring.domain.City;
 import com.dev.spring.domain.Product;
+import com.dev.spring.domain.State;
 import com.dev.spring.repositories.CategoryRepository;
+import com.dev.spring.repositories.CityRepository;
 import com.dev.spring.repositories.ProductRepository;
+import com.dev.spring.repositories.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +23,12 @@ public class Application implements CommandLineRunner {
 	private CategoryRepository categoryRepository;
 	@Autowired
 	private ProductRepository productRepository;
+
+	@Autowired
+	private StateRepository stateRepository;
+
+	@Autowired
+	private CityRepository cityRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -41,7 +51,15 @@ public class Application implements CommandLineRunner {
 		p2.getCategories().add(cat2);
 		p3.getCategories().addAll(Arrays.asList(cat1, cat2));
 
+		State s1 = new State(null, "Pernambuco");
+		State s2 = new State(null, "Bahia");
+
+		City c1 = new City(null, "Recife", s1);
+		City c2 = new City(null, "Paulo Afonso", s2);
+
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2));
 		productRepository.saveAll(Arrays.asList(p1, p2, p3));
+		stateRepository.saveAll(Arrays.asList(s1, s2));
+		cityRepository.saveAll(Arrays.asList(c1, c2));
 	}
 }

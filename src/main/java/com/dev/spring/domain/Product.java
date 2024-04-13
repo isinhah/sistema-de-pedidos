@@ -22,7 +22,7 @@ public class Product implements Serializable {
     private Double price;
 
     @JsonBackReference //Só vai mostrar as categorias do outro lado da associação
-    // Associação muitos para muitos: 1 produto pode estar em * categorias
+    // 1 produto pode estar em * categorias
     @ManyToMany //Em um dos dois lados
     @JoinTable(name = "product_category",
             joinColumns = @JoinColumn(name = "product_id"),
