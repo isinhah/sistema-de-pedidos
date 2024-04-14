@@ -31,15 +31,17 @@ public class Client implements Serializable {
     @CollectionTable(name = "phones")
     private Set<String> phones = new HashSet<>();
 
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
+
     public Client() {}
 
-    //Armazena o numero inteiro mas mostra o dado ClientType
     public Client(Integer id, String name, String email, String cpfOrCnpj, ClientType type) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.cpfOrCnpj = cpfOrCnpj;
-        this.type = type.getCode();
+        this.type = type.getCode(); //Armazena o numero inteiro mas mostra o dado ClientType
     }
 
     public Integer getId() {
@@ -88,6 +90,18 @@ public class Client implements Serializable {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public Set<String> getPhones() {
