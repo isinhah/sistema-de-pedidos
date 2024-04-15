@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -37,6 +38,9 @@ public class Application implements CommandLineRunner {
 
 	@Autowired
 	private PaymentRepository paymentRepository;
+
+	@Autowired
+	private OrderedItemRepository orderedItemRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -97,5 +101,17 @@ public class Application implements CommandLineRunner {
 
 		orderRepository.saveAll(Arrays.asList(ped1, ped2));
 		paymentRepository.saveAll(Arrays.asList(pagto1, pagto2));
+
+		OrderedItem op1 = new OrderedItem(ped1, p1, 0.00, 1, 2000.00);
+		OrderedItem op2 = new OrderedItem(ped2, p2, 0.00, 1, 25.00);
+		OrderedItem op3 = new OrderedItem(ped2, p3, 0.00, 1, 800.00);
+
+		ped1.getItems().add(op1);
+		ped2.getItems().addAll(Arrays.asList(op2, op3));
+
+		p1.getItems().add(op1);
+		p2.getItems().addAll(Arrays.asList(op2, op3));
+
+		orderedItemRepository.saveAll(Arrays.asList(op1, op2, op3));
 	}
 }
