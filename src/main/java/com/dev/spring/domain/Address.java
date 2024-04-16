@@ -1,6 +1,6 @@
 package com.dev.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -19,11 +19,10 @@ public class Address implements Serializable {
     private String street;
     private String number;
     private String complement;
-    private String neighborhood; //bairro
-    private String zipcode; //cep
+    private String neighborhood;
+    private String zipcode;
 
-    // Endereço só tem 1 cliente
-    @JsonBackReference // Endereço não pode mostrar o cliente
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;

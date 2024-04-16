@@ -1,6 +1,7 @@
 package com.dev.spring.domain;
 
 import com.dev.spring.domain.enums.PaymentStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -18,6 +19,7 @@ public class Payment implements Serializable {
     private Integer id;
     private PaymentStatus status;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "order_id")
     @MapsId

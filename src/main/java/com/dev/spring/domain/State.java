@@ -1,6 +1,6 @@
 package com.dev.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -20,8 +20,7 @@ public class State implements Serializable {
     private Integer id;
     private String name;
 
-    // Estado tem * cidades
-    @JsonBackReference // Não permite mostrar as cidades
+    @JsonIgnore
     @OneToMany(mappedBy = "state")
     private List<City> cities = new ArrayList<>();
 

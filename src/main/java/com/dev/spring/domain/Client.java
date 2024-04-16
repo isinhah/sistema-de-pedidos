@@ -1,6 +1,7 @@
 package com.dev.spring.domain;
 
 import com.dev.spring.domain.enums.ClientType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -31,6 +32,7 @@ public class Client implements Serializable {
     @CollectionTable(name = "phones")
     private Set<String> phones = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
 

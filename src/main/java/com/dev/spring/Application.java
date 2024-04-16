@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -78,7 +77,7 @@ public class Application implements CommandLineRunner {
 		Client cli1 = new Client(null, "Isabel", "isabel@gmail.com", "96454645", ClientType.INDIVIDUAL);
 		cli1.getPhones().addAll(Arrays.asList("34256346", "90395450"));
 		Client cli2 = new Client(null, "Contabilizei Contabilidade LTDA", "contabiliza@gmail.com", "53546446", ClientType.LEGALENTITY);
-		cli1.getPhones().addAll(Arrays.asList("05678653", "12343564"));
+		cli2.getPhones().addAll(Arrays.asList("05678653", "12343564"));
 
 		Address ad1 = new Address(null, "Rua Flores", "300", "Apto 303", "Jardim", "546464", cli1, c2);
 		Address ad2 = new Address(null, "Rua Campo Grande", "402", "Prédio 505", "Socorro", "232345", cli2, c1);

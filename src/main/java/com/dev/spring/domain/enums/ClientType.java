@@ -20,7 +20,6 @@ public enum ClientType {
         return description;
     }
 
-    // Ao informar o código, o método retorna o enum
     public static ClientType toEnum(Integer code) {
         if (code == null) {
             return null;

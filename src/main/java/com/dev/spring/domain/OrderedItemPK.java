@@ -8,7 +8,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable //subtipo
+@Embeddable
 public class OrderedItemPK implements Serializable {
 
     @Serial
@@ -38,7 +38,7 @@ public class OrderedItemPK implements Serializable {
         this.product = product;
     }
 
-    // 2 atributos
+    // 2 atributos: pedido e produto
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

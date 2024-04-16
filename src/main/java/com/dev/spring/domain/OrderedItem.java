@@ -1,5 +1,6 @@
 package com.dev.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 
@@ -14,6 +15,7 @@ public class OrderedItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //Chave composta contendo o pedido e produto
+    @JsonIgnore
     @EmbeddedId
     private OrderedItemPK id = new OrderedItemPK();
 
@@ -31,10 +33,12 @@ public class OrderedItem implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder() {
         return id.getOrder();
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return id.getProduct();
     }

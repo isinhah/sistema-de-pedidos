@@ -1,6 +1,6 @@
 package com.dev.spring.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -19,14 +19,14 @@ public class Product implements Serializable {
     private String name;
     private Double price;
 
-    @JsonBackReference //Só vai mostrar as categorias do outro lado da associação
-    // 1 produto pode estar em * categorias
-    @ManyToMany //Em um dos dois lados
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(name = "product_category",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.product")
     private Set<OrderedItem> items = new HashSet<>();
 
@@ -38,6 +38,7 @@ public class Product implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public List<Order> getOrders() {
         List<Order> list = new ArrayList<>();
         for (OrderedItem x : items) {

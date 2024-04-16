@@ -1,6 +1,7 @@
 package com.dev.spring.domain;
 
 import com.dev.spring.domain.enums.PaymentStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -14,10 +15,9 @@ public class BoletoPayment extends Payment {
     @Serial
     private static final long serialVersionUID = 1L;
 
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dueDate;
-
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date paymentDate;
 
     public BoletoPayment() {}
