@@ -15,6 +15,7 @@ Projeto desenvolvido durante o curso de Modelagem de Dados UML do Prof. Nélio A
 ## Backend
 
 - Spring Boot
+- Spring Data JPA
 - H2 Database
 
 # Modelo Conceitual
